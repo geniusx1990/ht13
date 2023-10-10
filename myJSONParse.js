@@ -137,12 +137,12 @@ function myJSONParse(input) {
         let token = advance(); 
         while (token.type !== "BraceClose") {
             if (token.type === "String") {
-                var key = token.value;
+                let key = token.value;
                 token = advance(); 
                 if (token.type !== "Colon")
                     throw new Error("Expected : in key-value pair");
                 token = advance(); 
-                var value = parseValue();
+                let value = parseValue();
                 result[key] = value;
             } else {
                 throw new Error("Expected String key in object. Token type: " + token.type);
@@ -155,10 +155,10 @@ function myJSONParse(input) {
     }
 
     function parseArray() {
-        var result = [];
-        var token = advance(); 
+        const result = [];
+        let token = advance(); 
         while (token.type !== "BracketClose") {
-            var value = parseValue();
+            let value = parseValue();
             result.push(value);
             token = advance(); 
             if (token.type === "Comma")
